@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeApi", "HomeApi\HomeApi.csproj", "{967FFFDC-5BDF-400C-8F07-2DACFB137A84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{967FFFDC-5BDF-400C-8F07-2DACFB137A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967FFFDC-5BDF-400C-8F07-2DACFB137A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967FFFDC-5BDF-400C-8F07-2DACFB137A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967FFFDC-5BDF-400C-8F07-2DACFB137A84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DEA8B30-FCCA-4213-B04C-05F6F0AED753}
+	EndGlobalSection
+EndGlobal
