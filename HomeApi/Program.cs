@@ -17,7 +17,7 @@ namespace HomeApi
 
 
         // Add services to the container.
-        builder.Services.Configure<HomeOptions>(builder.Configuration.GetSection("HomeOptions"));
+        builder.Services.Configure<HomeOptions>(builder.Configuration);
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
