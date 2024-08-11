@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 namespace HomeApi.Controllers
 {
     [ApiController]
-    [Route("controller")]
+    [Route("[controller]")]
     public class DevicesController : ControllerBase
     {
 
@@ -24,7 +24,7 @@ namespace HomeApi.Controllers
         // Поиск и загрузка инструкции по использованию устройства 
         [HttpGet]
         [HttpHead]
-        [Route("manufacturer")]
+        [Route("{manufacturer}")]
         public IActionResult GetManual([FromRoute] string manufacturer)
         {
             var staticPath = Path.Combine(_env.ContentRootPath, "Static");
@@ -36,7 +36,10 @@ namespace HomeApi.Controllers
             if (String.IsNullOrEmpty(filePath))
                 return StatusCode(404, $"Инструкции для производителя {manufacturer} не найдено , проверьте название");
 
-            return StatusCode(200 , manufacturer);
+            string fileType = "applicatio/jpg";
+            string fileName = $"{manufacturer}.jpg";
+
+            return PhysicalFile(filePath, fileType , fileName);
         }
     }
 }

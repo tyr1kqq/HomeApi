@@ -1,5 +1,6 @@
 
 using HomeApi.Configuration;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace HomeApi
@@ -11,6 +12,8 @@ namespace HomeApi
 
         public static void Main(string[] args)
         {
+
+            var assemly = Assembly.GetAssembly(typeof(MappingProfile));
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Configuration.AddJsonFile("HomeOptions.json");
@@ -20,6 +23,7 @@ namespace HomeApi
 
 
             // Add services to the container.
+            builder.Services.AddAutoMapper(assemly);
             builder.Services.Configure<ScreenApiOptions>(builder.Configuration);
             builder.Services.Configure<HomeOptions>(builder.Configuration);
             builder.Services.AddControllers();
