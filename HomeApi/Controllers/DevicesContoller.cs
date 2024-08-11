@@ -4,42 +4,50 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using HomeApi.Devices;
 
 
 namespace HomeApi.Controllers
 {
+
+    /// <summary>
+    /// Контроллер статусов устройств
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class DevicesController : ControllerBase
     {
+        private IOptions<HomeOptions> _options;
+        private IMapper _mapper;
 
-        private readonly IHostEnvironment _env;
-        private readonly ILogger<WeatherForecastController> _logger;
-        public DevicesController(ILogger<WeatherForecastController> logger , IHostEnvironment env)
+        public DevicesController(IOptions<HomeOptions> options, IMapper mapper)
         {
-            _env = env;
-            _logger = logger;
+            _options = options;
+            _mapper = mapper;
         }
 
-        // Поиск и загрузка инструкции по использованию устройства 
+        /// <summary>
+        /// Просмотр списка подключенных устройств
+        /// </summary>
         [HttpGet]
-        [HttpHead]
-        [Route("{manufacturer}")]
-        public IActionResult GetManual([FromRoute] string manufacturer)
+        [Route("")]
+        public IActionResult Get()
         {
-            var staticPath = Path.Combine(_env.ContentRootPath, "Static");
-            var filePath = Directory.GetFiles(staticPath)
-                .FirstOrDefault(f => f.Split("\\")
-                .Last()
-                .Split('.')[0] == manufacturer);
+            return StatusCode(200, "Устройства отсутствуют");
+        }
 
-            if (String.IsNullOrEmpty(filePath))
-                return StatusCode(404, $"Инструкции для производителя {manufacturer} не найдено , проверьте название");
-
-            string fileType = "applicatio/jpg";
-            string fileName = $"{manufacturer}.jpg";
-
-            return PhysicalFile(filePath, fileType , fileName);
+        /// <summary>
+        /// Добавление нового устройства
+        /// </summary>
+        [HttpPost]
+        [Route("Add")]
+        public IActionResult Add(
+          [FromBody] // Атрибут, указывающий, откуда брать значение объекта
+           AddDeviceRequest request // Объект запроса
+        )
+        {
+            return StatusCode(200, $"Устройство {request.Name} добавлено!");
         }
     }
 }
