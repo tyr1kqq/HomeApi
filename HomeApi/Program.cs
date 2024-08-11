@@ -14,10 +14,14 @@ namespace HomeApi
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Configuration.AddJsonFile("HomeOptions.json");
+            builder.Configuration.AddJsonFile("appsettings.json");
+            builder.Configuration.AddJsonFile("appsettings.Development.json");
+            builder.Configuration.AddJsonFile("ScreenApiOptions.json");
 
 
-        // Add services to the container.
-        builder.Services.Configure<HomeOptions>(builder.Configuration);
+            // Add services to the container.
+            builder.Services.Configure<ScreenApiOptions>(builder.Configuration);
+            builder.Services.Configure<HomeOptions>(builder.Configuration);
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
