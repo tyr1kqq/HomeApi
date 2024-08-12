@@ -5,7 +5,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
-using HomeApi.Devices;
+using HomeApi.Contacts;
+
 
 
 namespace HomeApi.Controllers
